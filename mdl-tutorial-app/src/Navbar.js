@@ -6,6 +6,14 @@ import Tabs from '@mui/material/Tabs';
 import Box from '@mui/material/Box';
 import TabPanel from './TabPanel';
 
+const tabs = [
+    {title: "Home", id: generateUniqueID()}, 
+    {title: "Intro to MDL", id: generateUniqueID()}, 
+    {title: "Defining the Data Source", id: generateUniqueID()}, 
+    {title: "Writing MDL Expressions", id: generateUniqueID()}, 
+    {title: "Common Errors", id: generateUniqueID()},
+]
+
 const IntroSections = [
     {title: "What is MDL?", id: generateUniqueID()}, 
     {title: "A Well-Crafted Data Set", id: generateUniqueID()}, 
@@ -14,24 +22,11 @@ const IntroSections = [
     {title: "Metrics", id: generateUniqueID()},
 ]
 
-const tabs = [
-    {title: "Home", id: generateUniqueID(), sections: []}, 
-    {title: "Intro to MDL", id: generateUniqueID(), sections: IntroSections}, 
-    {title: "Defining the Data Source", id: generateUniqueID(), sections: []}, 
-    {title: "Writing MDL Expressions", id: generateUniqueID(), sections: []}, 
-    {title: "Common Errors", id: generateUniqueID(), sections: []},
-]
-
 const NavBar = () => {
     const [tabId, setTabId] = useState(tabs.length !== 0 ? tabs[0].id : "none");
     const handleTabChange = (event, newId) => {
         setTabId(newId);
     };
-    const getTabById = (id) => {
-        return tabs.find((tab) => {
-            return tab.id === id;
-        })
-    }
 
     return (
         <>
@@ -54,7 +49,8 @@ const NavBar = () => {
                     </Tabs>
                 </Box>)}
             </Box>
-            <TabPanel id={tabId} sections={getTabById(tabId).sections}/>
+            {tabId === tabs[0].id && (<h4>Home Start Button</h4>)}
+            {tabId === tabs[1].id && <TabPanel id={tabId} sections={IntroSections}/>}
         </>
     );
 }

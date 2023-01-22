@@ -10,14 +10,9 @@ const TabPanel = ({id, sections}) => {
     const handleSectionChange = (event, newId) => {
         setSectionId(newId);
     };
-    const test = sections.length !== 0 ? sections[0].id : "none"
 
     return (
         <>
-        <h4>{test}</h4>
-        <h4>{sections.length}</h4>
-        <h4>{sectionId}</h4>
-            {sections.length === 0 && (<h4>Home Start Button</h4>)}
             {sectionId !== "none" && (
                 <Box sx={{ display:'flex', flexDirection: 'row', width: '100%' }}>
                     <Tabs
